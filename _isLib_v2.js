@@ -1,15 +1,15 @@
-let {/*default:*/self, string, number, boolean} = {
-    self: { /* in order to destructure it to default */
-        string: "",
-        number: 123,
-        boolean: (false || true),
-        /* ^1 : other types with placeholder values e.g. function, array, object itself */
-    },
-    string: "",
-    number: 123,
-    boolean: (false || true),
-    /* ^1 : other types with placeholder values e.g. function, array, object itself */
-  }
+let {/*default:*/self, name, age, isEmployed} = {
+  self: { /* in order to destructure it to default */
+      name: (String() || "_"),
+      age: (Number() || Number(1)),
+      isEmployed: (Boolean() || !Boolean()),
+      /* ^1 : other types with placeholder values e.g. function, array, object itself */
+  },
+  name: (String() || "_"),
+  age: (Number() || Number(1)),
+  isEmployed: (Boolean() || !Boolean()),
+  /* ^1 : other types with placeholder values e.g. function, array, object itself */
+}
 
   let selfValueCheck = undefined ;
   

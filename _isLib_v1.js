@@ -1,7 +1,7 @@
 let struct = {
-  string: "",
-  number: 123,
-  boolean: (false || true),
+  name: (String() || "_"),
+  age: (Number() || Number(1)),
+  isEmployed: (Boolean() || !Boolean()),
   /* ^1 : other types with placeholder values e.g. function, array, object itself */
 }
 

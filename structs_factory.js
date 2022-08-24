@@ -1,3 +1,4 @@
+  // IMAGINATIVE EXPORT IMPORT OF _is() utility [--START--] :
   let {/*default:*/self, name, age, isEmployed} = {
     self: { /* in order to destructure it to default */
         name: (String() || "_"),
@@ -11,8 +12,6 @@
     /* ^1 : other types with placeholder values e.g. function, array, object itself */
   }
 
-  let selfValueCheck = undefined ;
-  
   function err() {
     console.error("invalid JavaScript type")
   }
@@ -20,18 +19,18 @@
   // NOTE : is() function MUST CONFORM the STRUCT object defined above !
   function is(type){
     if (false) {/* switch to else if :....... */}
-    else if (typeof this.string == typeof type) {
+    else if (typeof this.name == typeof type) {
       //console.log("correct, it's a type of: ")
-        return ["string", this.string];
+        return ["string", this.name];
     }
-    else if (typeof this.number == typeof type) {
+    else if (typeof this.age == typeof type) {
       //console.log("correct, it's a type of: ")
-        return ["number", this.number];
+        return ["number", this.age];
     }
     // BEWARE : in JavaScript Boolean shortcuts [ISSUE TO SOLVED]
-    else if (typeof this.boolean == typeof type) {
+    else if (typeof this.isEmployed == typeof type) {
       //console.log("correct, it's a type of: ")
-        return ["boolean", this.boolean];
+        return ["boolean", this.isEmployed];
     }
     // logic flow of the remaining JavaScript types (refer to ^1 above)
     else {
@@ -46,23 +45,33 @@
     return is.call(self, _type);
     }
 
-    // EXAMPLE 2 : if passed for checker(), returned rest values of expected type T type + is(valueItself == selfValueCheck)
-    function checker(_is, T, ...rest) {
+    // EXAMPLE 2 : if passed for checker(), when make instances , otherwise prevent instantiation with (refer below - ^2)
+    function checker (_is, T, ...rest) {
         if (_is[0] === typeof T) {
             console.log("matched type within resultant values (if any): ", [selfValueCheck, rest].flat())
             return [selfValueCheck, rest].flat();
         }
         else {
             err()
+            return;
         }
     }
 
-    // EXAMPLE 2 [TESTS] :
-    console.log("test1: ")
-    checker(_is(1), number/*, comma seperated list of values to return (if any) */)
-    console.log("test2: ")
-    checker(_is("1"), number/*, comma seperated list list of values to return (if any) */)
-    console.log("test3: ")
-    checker(_is(true), boolean/*, comma seperated list of values to return (if any) */)
-    console.log("test4: ")
-    checker(_is("false"), boolean/*, comma seperated list list of values to return (if any) */)
+// _is() utility [--ENDS--]
+
+function factoryPerson(n /* string */, a /* int */, iE /* bool */) /* Person */ {
+	var thisPerson = {}
+  thisPerson.name = checker(_is(n), name)
+  thisPerson.age = checker(_is(a), age)
+  thisPerson.isEmployed = checker(_is(iE), isEmployed)
+  return thisPerson;
+
+}
+
+function main() {
+	person1 = new factoryPerson("", 0, false)
+	person2 = new factoryPerson("Doe", "456", false)
+	person3 = new factoryPerson("Moh", 789, "Boolean")
+	console.log(person1, person2, person3)
+}
+main()
