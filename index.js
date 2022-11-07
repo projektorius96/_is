@@ -10,8 +10,6 @@ let {/*default:*/self, string, number, boolean} = {
   boolean: (false || true),
   /* ^1 : other types with placeholder values e.g. function, array, object itself */
 }
-
-  let selfValueCheck = undefined ;
   
   function err() {
     console.error("invalid JavaScript type")
@@ -21,14 +19,14 @@ let {/*default:*/self, string, number, boolean} = {
   function is(type){
     if (false) {/* switch to else if :....... */}
     else if (typeof this.string == typeof type) {
-        return "string";
+        return ["string", type];
     }
     else if (typeof this.number == typeof type) {
-        return "number";
+        return ["number", type];
     }
     // BEWARE : in JavaScript Boolean shortcuts [ISSUE TO SOLVED]
     else if (typeof this.boolean == typeof type) {
-        return "boolean";
+        return ["boolean", type];
     }
     // logic flow of the remaining JavaScript types (refer to ^1 above)
     else {
@@ -44,8 +42,8 @@ let {/*default:*/self, string, number, boolean} = {
     }
 
     function check(_if, T/*, ...rest */) {
-        if (_if/*[0]*/ === typeof T) {
-            return selfValueCheck/* [selfValueCheck, rest].flat() */;
+        if (_if[0] === typeof T) {
+            return _if[1]/* [_if[1], rest].flat() */;
         }
         else {
             err()
@@ -53,8 +51,8 @@ let {/*default:*/self, string, number, boolean} = {
     }
     
     // [TESTS] :
-    // console.log("test1: ")
-    //   console.log(check(_if(1), number/*, comma seperated list of values to return (if any) */))
+    console.log("test1: ")
+      console.log(check(_if(1), number/*, comma seperated list of values to return (if any) */))
     // console.log("test2: ")
     //   console.log(check(_if("1"), number/*, comma seperated list list of values to return (if any) */))
     // console.log("test3: ")
