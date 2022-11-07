@@ -1,8 +1,5 @@
-### NOTES
+# _is
 
-> Utility_name: "_is",
-> Author: Lukas Gaucas (projektorius96)
-
---- 
-
-> INTRO : Each struct-like object destructured key property is utilised just as a placeholder for native JavaScript type itself, subsequently called on function is() KEYWORDS (THIS->SELF) e.g. THIS.number with SELF.number
+> Utility_name: "_is", <br>
+> Author: Lukas Gaucas (projektorius96) <br>
+> DEV_NOTE: index was renamed to `.mjs` format with regards to ES6 module to be cross-runtime (i.e. suitable for Node.js, any Browser of choice)
